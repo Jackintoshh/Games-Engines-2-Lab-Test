@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class LightProperties : MonoBehaviour
 {
-    bool isActive = false;
-    bool isChanging = false;
-    bool isNotActive = false;
+    public bool isActive = false;
+    public bool isChanging = false;
+    public bool isNotActive = false;
     Color lightCol;
     float time;
     int randTime;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //Choose starting colour for each light randomly
         int rand = (int)Random.Range(0, 3);
         //Debug.Log(rand);
         if(rand == 0)
@@ -42,8 +45,8 @@ public class LightProperties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Update light states
         time += Time.deltaTime;
-        Debug.Log(randTime);
 
         if(time > randTime && isActive)
         {
@@ -52,8 +55,6 @@ public class LightProperties : MonoBehaviour
             isActive = false;
             lightCol = Color.yellow;
             this.GetComponent<Renderer>().material.color = lightCol;
-
-            //randTime = (int)Random.Range(5, 11);
 
             if (isChanging && time > 4f)
             {
